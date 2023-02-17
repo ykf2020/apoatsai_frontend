@@ -10,13 +10,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CookieIcon from '@mui/icons-material/Cookie';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
+import PeopleIcon from '@mui/icons-material/People';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link'
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 export default function Layout(props) {
   const { window } = props;
@@ -28,39 +33,51 @@ export default function Layout(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar>
+        阿婆仔菜後台系統
+      </Toolbar>
       <Divider />
       <List style={{paddingTop: 0}}>
-       <Link href="/customer">
-        <ListItem key={'1'} disablePadding>
+        <ListItem component={Link} href="/dashboard" key={'1'} disablePadding>
           <ListItemButton>
             <ListItemIcon>
-              <MailIcon />
+              <DashboardIcon />
             </ListItemIcon>
-            <ListItemText primary={'customer'} />
+            <ListItemText primary={'報表'} />
           </ListItemButton>
         </ListItem>
-        </Link>
-        <Link href="/product">
-          <ListItem key={'2'} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={'product'} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-        <Link href="/order">
-          <ListItem key={'3'} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={'order'} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+        <ListItem component={Link} href="/product" key={'2'} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <CookieIcon />
+            </ListItemIcon>
+            <ListItemText primary={'商品'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem component={Link} href="/customer" key={'1'} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary={'顧客'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem component={Link} href="/order" key={'3'} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary={'訂單'} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem component={Link} href="/create_order" key={'3'} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary={'成立訂單'} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </div>
   );
@@ -95,7 +112,6 @@ export default function Layout(props) {
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
       >
         <Drawer
           container={container}
