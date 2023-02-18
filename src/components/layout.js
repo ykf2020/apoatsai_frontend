@@ -20,6 +20,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link'
+import Grid from '@mui/material/Grid';
 
 const drawerWidth = 200;
 
@@ -54,7 +55,7 @@ export default function Layout(props) {
             <ListItemText primary={'商品'} />
           </ListItemButton>
         </ListItem>
-        <ListItem component={Link} href="/customer" key={'1'} disablePadding>
+        <ListItem component={Link} href="/customer" key={'3'} disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <PeopleIcon />
@@ -62,7 +63,7 @@ export default function Layout(props) {
             <ListItemText primary={'顧客'} />
           </ListItemButton>
         </ListItem>
-        <ListItem component={Link} href="/order" key={'3'} disablePadding>
+        <ListItem component={Link} href="/order" key={'4'} disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <AssignmentIcon />
@@ -70,7 +71,7 @@ export default function Layout(props) {
             <ListItemText primary={'訂單'} />
           </ListItemButton>
         </ListItem>
-        <ListItem component={Link} href="/create_order" key={'3'} disablePadding>
+        <ListItem component={Link} href="/create_order" key={'5'} disablePadding>
           <ListItemButton>
             <ListItemIcon>
               <ShoppingCartIcon />
@@ -144,7 +145,7 @@ export default function Layout(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <main>{props.children}</main>
+        <Grid container justifyContent="center">{props.children}</Grid>
       </Box>
     </Box>
   );

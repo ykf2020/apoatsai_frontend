@@ -57,7 +57,7 @@ const rows = [
   ),
 ];
 
-export default function Customer() {
+export default function Customers() {
   return (
     <>
       <Table size="small">
