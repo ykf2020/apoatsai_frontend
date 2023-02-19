@@ -219,20 +219,26 @@ export function ExistedCustomerLayout({ customerId }) {
       )}
       {value === 1 && (
         <>
-        <Grid item container xs={8} justifyContent="center" direction="column">
-          <Basket/>
-          <Grid item container justifyContent="flex-end" gap={2}>
-            <Button variant="contained" size="large">新增品項至購物車</Button>
-            <Button variant="contained" size="large">成立訂單</Button>
+          <Grid
+            item
+            container
+            xs={8}
+            justifyContent="center"
+            direction="column"
+          >
+            <Basket />
+            <Grid item container justifyContent="flex-end" gap={2}>
+              <Button variant="contained" size="large">
+                新增品項至購物車
+              </Button>
+              <Button variant="contained" size="large">
+                成立訂單
+              </Button>
+            </Grid>
           </Grid>
-            
-        </Grid>
         </>
-        )
-      }
-      {value === 2 && (
-        <OrderList/>
       )}
+      {value === 2 && <OrderList />}
     </>
   );
 }

@@ -14,15 +14,10 @@ export function BasicCollapseItem({ primary, secondary, badgeContent }) {
   );
 }
 
-export function SpecialCollaseItem() {
+export function SpecialCollaseItem({ primary, secondary }) {
   return (
     <Paper sx={{ py: 1, pl: 1.5, pr: 2, mr: 1, display: "flex" }}>
-      <Badge
-        badgeContent={"x4"}
-        color="primary"
-        style={{ left: "100%", transform: "translate(16px, 24px)" }}
-      />
-      <ListItemText primary={"kfkf"} secondary={"$100"} />
+      <ListItemText primary={primary} secondary={secondary} />
     </Paper>
   );
 }

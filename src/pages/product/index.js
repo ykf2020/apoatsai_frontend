@@ -1,12 +1,8 @@
-import * as React from "react";
-import Link from "@mui/material/Link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, orderNotClose) {
@@ -105,7 +101,7 @@ function CategoryList() {
         </TableBody>
       </Table>
     </>
-  )
+  );
 }
 
 export default function Product() {
@@ -113,5 +109,5 @@ export default function Product() {
     <>
       <ProductList />
     </>
-  )
+  );
 }
