@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link from "@mui/material/Link";
+import Link from "next/Link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,6 +13,7 @@ import { useTheme } from "@mui/material/styles";
 import BasketIconButton from "@/components/basketIconButton";
 import PaidIconButton from "@/components/paidIconButton";
 import PickUpIconButton from "@/components/pickUpIconButton";
+
 export function Row({ data }) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -26,16 +27,16 @@ export function Row({ data }) {
           <Link href={`/customer/${data.id}`}>{data.name}</Link>
         </TableCell>
         <TableCell>{data.amount}</TableCell>
-        <TableCell sx={{py: 1.6}}>
-          <Grid  container justifyContent="flex-end" gap={1}>
+        <TableCell sx={{ py: 1.6 }}>
+          <Grid container justifyContent="flex-end" gap={1}>
             <BasketIconButton
               onClick={() => {
                 setOpen(!open);
               }}
               badgeContent={1}
             />
-            <PaidIconButton notPaidYet={false}/>
-            <PickUpIconButton notPickUpYet={false}/>
+            <PaidIconButton notPaidYet={false} />
+            <PickUpIconButton notPickUpYet={false} />
           </Grid>
         </TableCell>
       </TableRow>
