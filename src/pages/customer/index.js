@@ -34,8 +34,8 @@ export function Row({ data }) {
               }}
               badgeContent={1}
             />
-            <PaidIconButton />
-            <PickUpIconButton />
+            <PaidIconButton notPaidYet={false}/>
+            <PickUpIconButton notPickUpYet={false}/>
           </Grid>
         </TableCell>
       </TableRow>

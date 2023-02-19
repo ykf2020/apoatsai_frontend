@@ -3,20 +3,22 @@ import IconButton from "@mui/material/IconButton";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
-export default function PickUpIconButton({ disabled = false }) {
+export default function PickUpIconButton({ notPickUpYet = false }) {
   const theme = useTheme();
   return (
     <Badge badgeContent={0} color="secondary">
       <IconButton
         sx={{
-          backgroundColor: disabled ? grey[500] : theme.palette.primary.main,
+          backgroundColor: notPickUpYet
+            ? theme.palette.primary.main
+            : grey[500],
           color: "white",
           "&:hover": {
-            cursor: disabled && "default",
-            backgroundColor: disabled
-              ? grey[500]
-              : theme.palette.primary.main.contrastText,
-            color: disabled ? "white" : theme.palette.primary.light,
+            cursor: !notPickUpYet && "default",
+            backgroundColor: notPickUpYet
+              ? theme.palette.primary.main.contrastText
+              : grey[500],
+            color: notPickUpYet ? theme.palette.primary.light : "white",
           },
         }}
         size="small"
