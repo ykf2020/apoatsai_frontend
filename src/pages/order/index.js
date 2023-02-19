@@ -51,12 +51,12 @@ const rows = [
 export default function Order() {
   return (
     <>
-      <Table size="small">
+      <Table>
         <TableHead>
           <TableRow>
+            <TableCell>o</TableCell>
             <TableCell>編號</TableCell>
-            <TableCell>Line 名稱</TableCell>
-            <TableCell>訂單內容</TableCell>
+            <TableCell>顧客名稱</TableCell>
             <TableCell>訂單金額</TableCell>
             <TableCell>建單日期</TableCell>
             <TableCell>結帳日期</TableCell>
@@ -66,9 +66,9 @@ export default function Order() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
+              <TableCell>o</TableCell>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
               <TableCell>{`$${row.amount}`}</TableCell>
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.date}</TableCell>
