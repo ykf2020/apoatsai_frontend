@@ -13,6 +13,8 @@ import { useTheme } from "@mui/material/styles";
 import BasketIconButton from "@/components/basketIconButton";
 import PaidIconButton from "@/components/paidIconButton";
 import PickUpIconButton from "@/components/pickUpIconButton";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 export function Row({ data }) {
   const theme = useTheme();
@@ -68,6 +70,11 @@ export function Row({ data }) {
 }
 
 export default function Customers() {
+  const [totalPage, setTotalPage] = useState(10);
+  const [page, setPage] = useState(3);
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
   // Generate Order Data
   function createData(id, lineName, name, amount, orderNotClose) {
     return { id, lineName, name, amount, orderNotClose };
@@ -98,6 +105,14 @@ export default function Customers() {
           ))}
         </TableBody>
       </Table>
+      <Stack spacing={2} sx={{ mt: 3.5 }}>
+        <Pagination
+          count={totalPage}
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+        />
+      </Stack>
     </>
   );
 }

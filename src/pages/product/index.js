@@ -1,113 +1,80 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import { useState } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import AddIcon from "@mui/icons-material/Add";
+import Button from "@mui/material/Button";
+import Basket from "@/components/basket";
+import ProductTable from "./components/productTable";
+import CategoryTable from "./components/categoeyTable";
+import ProductTagsBox from "./components/productTagsBox";
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, orderNotClose) {
-  return { id, date, name, shipTo, paymentMethod, orderNotClose };
-}
-
-const rows = [
-  createData(
-    0,
-    "16 Mar, 2019",
-    "Elvis Presley",
-    "Tupelo, MS",
-    "VISA ⠀•••• 3719",
-    false
-  ),
-  createData(
-    1,
-    "16 Mar, 2019",
-    "Paul McCartney",
-    "London, UK",
-    "VISA ⠀•••• 2574",
-    true
-  ),
-  createData(
-    2,
-    "16 Mar, 2019",
-    "Tom Scholz",
-    "Boston, MA",
-    "MC ⠀•••• 1253",
-    false
-  ),
-  createData(
-    3,
-    "16 Mar, 2019",
-    "Michael Jackson",
-    "Gary, IN",
-    "AMEX ⠀•••• 2000",
-    false
-  ),
-  createData(
-    4,
-    "15 Mar, 2019",
-    "Bruce Springsteen",
-    "Long Branch, NJ",
-    "VISA ⠀•••• 5919",
-    true
-  ),
-];
-
-function ProductList() {
+export function CreateProductButton() {
   return (
-    <>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Line 名稱</TableCell>
-            <TableCell>姓名 / 綽號</TableCell>
-            <TableCell>目前購物籃</TableCell>
-            <TableCell align="right">訂單未取貨</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell align="right"> hihi </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </>
+    <Button
+      variant="outlined"
+      sx={{ height: 1 }}
+      size="small"
+      startIcon={<AddIcon />}
+    >
+      新增商品
+    </Button>
   );
 }
 
-function CategoryList() {
+export function CreateCategoryButton() {
   return (
-    <>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>種類</TableCell>
-            <TableCell>敘述</TableCell>
-            <TableCell>商品數量</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </>
+    <Button
+      variant="outlined"
+      sx={{ height: 1 }}
+      size="small"
+      startIcon={<AddIcon />}
+    >
+      新增商品分類
+    </Button>
+  );
+}
+
+export function CreateTagButton() {
+  return (
+    <Button
+      variant="outlined"
+      sx={{ height: 1 }}
+      size="small"
+      startIcon={<AddIcon />}
+    >
+      新增商品標籤
+    </Button>
   );
 }
 
 export default function Product() {
+  const [value, setValue] = useState(0);
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
-      <ProductList />
+      <Grid item xs={12}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          sx={{ borderBottom: 1, borderColor: "divider" }}
+        >
+          <Tabs value={value} onChange={handleTabChange}>
+            <Tab label="商品" />
+            <Tab label="商品分類" />
+            <Tab label="商品標籤" />
+          </Tabs>
+          {value === 0 && <CreateProductButton />}
+          {value === 1 && <CreateCategoryButton />}
+          {value === 2 && <CreateTagButton />}
+        </Box>
+      </Grid>
+      {value === 0 && <ProductTable />}
+      {value === 1 && <CategoryTable />}
+      {value === 2 && <ProductTagsBox />}
     </>
   );
 }

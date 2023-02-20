@@ -12,6 +12,8 @@ import {
   BasicCollapseItem,
   SpecialCollaseItem,
 } from "@/components/collapseItem";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
 }
@@ -108,6 +110,11 @@ export function OrderRow({ data }) {
 }
 
 export default function OrderList() {
+  const [totalPage, setTotalPage] = useState(10);
+  const [page, setPage] = useState(3);
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
   return (
     <Grid item container justifyContent="center" xs={12}>
       <Table>
@@ -128,6 +135,14 @@ export default function OrderList() {
           ))}
         </TableBody>
       </Table>
+      <Stack spacing={2} sx={{ mt: 3.5 }}>
+        <Pagination
+          count={totalPage}
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+        />
+      </Stack>
     </Grid>
   );
 }
