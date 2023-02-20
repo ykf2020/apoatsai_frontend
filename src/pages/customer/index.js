@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,6 +15,39 @@ import PaidIconButton from "@/components/paidIconButton";
 import PickUpIconButton from "@/components/pickUpIconButton";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import AddIcon from "@mui/icons-material/Add";
+import Button from "@mui/material/Button";
+
+export function CreateCustomerButton() {
+  return (
+    <Button
+      component={Link}
+      href={'/customer/new'}
+      variant="outlined"
+      sx={{ height: 1 }}
+      size="small"
+      startIcon={<AddIcon />}
+    >
+      新增顧客
+    </Button>
+  );
+}
+
+export function CreateCategoryButton() {
+  return (
+    <Button
+      variant="outlined"
+      sx={{ height: 1 }}
+      size="small"
+      startIcon={<AddIcon />}
+    >
+      新增顧客標籤
+    </Button>
+  );
+}
 
 export function Row({ data }) {
   const theme = useTheme();
@@ -29,6 +62,7 @@ export function Row({ data }) {
           <Link href={`/customer/${data.id}`}>{data.name}</Link>
         </TableCell>
         <TableCell>{data.amount}</TableCell>
+        <TableCell align="center">無</TableCell>
         <TableCell sx={{ py: 1.6 }}>
           <Grid container justifyContent="flex-end" gap={1}>
             <BasketIconButton
@@ -70,10 +104,14 @@ export function Row({ data }) {
 }
 
 export default function Customers() {
+  const [value, setValue] = useState(0);
   const [totalPage, setTotalPage] = useState(10);
   const [page, setPage] = useState(3);
   const handlePageChange = (event, value) => {
     setPage(value);
+  };
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
   };
   // Generate Order Data
   function createData(id, lineName, name, amount, orderNotClose) {
@@ -90,13 +128,28 @@ export default function Customers() {
 
   return (
     <>
-      <Table size="small">
+      <Grid item xs={12}>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          sx={{ borderBottom: 1, borderColor: "divider" }}
+        >
+          <Tabs value={value} onChange={handleTabChange}>
+            <Tab label="顧客列表" />
+            <Tab label="顧客標籤" />
+          </Tabs>
+          {value === 0 && <CreateCustomerButton />}
+          {value === 1 && <CreateCategoryButton />}
+        </Box>
+      </Grid>
+      <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Line 名稱</TableCell>
-            <TableCell>姓名 / 綽號</TableCell>
-            <TableCell>已消費金額</TableCell>
-            <TableCell align="right">購物狀態</TableCell>
+            <TableCell width="20%">Line 名稱</TableCell>
+            <TableCell width="20%">姓名 / 綽號</TableCell>
+            <TableCell width="15%">已消費金額</TableCell>
+            <TableCell align="center">標籤</TableCell>
+            <TableCell width="15%" align="right">購物狀態</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
