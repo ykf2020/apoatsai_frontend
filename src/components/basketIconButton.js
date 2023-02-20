@@ -15,14 +15,16 @@ export default function BasketIconButton({
       <IconButton
         onClick={onClick}
         sx={{
-          backgroundColor: badgeContent>1 ? grey[500] : theme.palette.primary.main,
+          backgroundColor:
+            badgeContent > 1 ? grey[500] : theme.palette.primary.main,
           color: "white",
           "&:hover": {
-            cursor: badgeContent>1 && "default",
-            backgroundColor: badgeContent>1
-              ? grey[500]
-              : theme.palette.primary.main.contrastText,
-            color: badgeContent>1 ? "white" : theme.palette.primary.light,
+            cursor: badgeContent > 1 && "default",
+            backgroundColor:
+              badgeContent > 1
+                ? grey[500]
+                : theme.palette.primary.main.contrastText,
+            color: badgeContent > 1 ? "white" : theme.palette.primary.light,
           },
         }}
         size="small"
