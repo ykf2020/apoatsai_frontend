@@ -238,7 +238,7 @@ export function ExistedCustomerLayout({ customerId }) {
           </Grid>
         </>
       )}
-      {value === 2 && <OrderList />}
+      {value === 2 && <OrderList sx={{ mt: 1 }} />}
     </>
   );
 }
