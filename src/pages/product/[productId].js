@@ -196,6 +196,135 @@ export function NewCustomerLayout() {
   );
 }
 
+export function AddToCartByProduct() {
+  const top100Films = [
+    { label: 'The Shawshank Redemption', year: 1994 },
+    { label: 'The Godfather', year: 1972 },
+    { label: 'The Godfather: Part II', year: 1974 },
+    { label: 'The Dark Knight', year: 2008 },
+    { label: '12 Angry Men', year: 1957 },
+    { label: "Schindler's List", year: 1993 },
+    { label: 'Pulp Fiction', year: 1994 },
+  ]
+  return (
+    <Grid container justifyContent="space-around">
+          <Grid
+            item
+            container
+            flexDirection="column"
+            alignItems="center"
+            xs={4}
+          >
+            <Paper
+              elevation={2}
+              sx={{
+                width: "100%",
+                minHeight: "300px",
+                display: "flex",
+                flexDirection: "column",
+                mt: 4,
+                pt: 2,
+                pr: 1,
+              }}
+            >
+              <Typography
+                component={"div"}
+                variant="h6"
+                sx={{ mx: "auto", mb: 2 }}
+              >
+                商品資訊
+              </Typography>
+              <Box sx={{ ml: 2, mb: 2 }}>
+                <Typography component={"span"}>商品資訊：</Typography>
+                <Typography component={"span"}>YAYAYA</Typography>
+              </Box>
+              <Box sx={{ ml: 2, mb: 2 }}>
+                <Typography component={"span"}>商品分類：</Typography>
+                <Typography component={"span"}>YAYAYA</Typography>
+              </Box>
+              <Box sx={{ ml: 2, mb: 2 }}>
+                <Typography component={"span"}>價格：</Typography>
+                <Typography component={"span"}>YAYAYA</Typography>
+              </Box>
+              <Box sx={{ ml: 2, mb: 2 }}>
+                <Typography component={"span"}>庫存數量：</Typography>
+                <Typography component={"span"}>YAYAYA</Typography>
+              </Box>
+              <Box sx={{ ml: 2, mb: 2 }}>
+                <Typography component={"span"}>商品標籤：</Typography>
+                <Typography component={"span"}>
+                  YAYAYA YAYAYA YAYAYA YAYAYA YAYAYA
+                </Typography>
+              </Box>
+            </Paper>
+          </Grid>
+          <Grid
+            item
+            container
+            justifyContent={"center"}
+            xs={1}
+            sx={{ pt: "150px" }}
+          >
+            <DoubleArrowIcon />
+          </Grid>
+          <Grid
+            item
+            container
+            flexDirection="column"
+            alignItems="center"
+            xs={5}
+          >
+            <Paper
+              elevation={2}
+              sx={{
+                width: "100%",
+                minHeight: "300px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                mt: 4,
+                mb: 3,
+                pt: 2,
+                px: 1,
+              }}
+            >
+              <Typography
+                component={"div"}
+                variant="h6"
+                sx={{ mx: "auto", mb: 2 }}
+              >
+                選擇商品數量及顧客
+              </Typography>
+              <Box sx={{width:'100%', display: 'flex', height:'40px', gap:2, px: 2}}>
+              <TextField
+                  label="數量"
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  sx={{width:'75px', height: '50px', '&.MuiInputBase-root': {padding: '16px 8px 16px 6px'}}}
+                />
+              <Autocomplete
+                disablePortal
+                sx={{width:'100%', height: '50px'}}
+                options={top100Films}
+                renderInput={(params) => <TextField {...params} label="顧客名稱" InputLabelProps={{
+                    shrink: true,
+                  }} />}
+              />
+              </Box>
+              <Box sx={{mt:3}}>
+                <IconButton color="primary">
+                  <AddCircleIcon/>
+                </IconButton>
+              </Box>
+            </Paper>
+            <Button variant="contained">確認加入</Button>
+          </Grid>
+        </Grid>
+  )
+}
+
 export function ExistedProductLayout({ productId }) {
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
@@ -213,15 +342,7 @@ export function ExistedProductLayout({ productId }) {
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
-  const top100Films = [
-    { label: 'The Shawshank Redemption', year: 1994 },
-    { label: 'The Godfather', year: 1972 },
-    { label: 'The Godfather: Part II', year: 1974 },
-    { label: 'The Dark Knight', year: 2008 },
-    { label: '12 Angry Men', year: 1957 },
-    { label: "Schindler's List", year: 1993 },
-    { label: 'Pulp Fiction', year: 1994 },
-  ]
+  
   return (
     <>
       <Grid item xs={12}>
@@ -232,7 +353,7 @@ export function ExistedProductLayout({ productId }) {
         >
           <Tabs value={value} onChange={handleTabChange}>
             <Tab label="商品資訊" />
-            <Tab label="加入購物車" />
+            <Tab label="加入購物籃" />
           </Tabs>
           <Button
             component={Link}
@@ -383,121 +504,7 @@ export function ExistedProductLayout({ productId }) {
         </Paper>
       )}
       {value === 1 && (
-        <Grid container justifyContent="space-around">
-          <Grid
-            item
-            container
-            flexDirection="column"
-            alignItems="center"
-            xs={4}
-          >
-            <Paper
-              elevation={2}
-              sx={{
-                width: "100%",
-                minHeight: "300px",
-                display: "flex",
-                flexDirection: "column",
-                mt: 4,
-                pt: 2,
-                pr: 1,
-              }}
-            >
-              <Typography
-                component={"div"}
-                variant="h6"
-                sx={{ mx: "auto", mb: 2 }}
-              >
-                商品資訊
-              </Typography>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography component={"span"}>商品資訊：</Typography>
-                <Typography component={"span"}>YAYAYA</Typography>
-              </Box>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography component={"span"}>商品分類：</Typography>
-                <Typography component={"span"}>YAYAYA</Typography>
-              </Box>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography component={"span"}>價格：</Typography>
-                <Typography component={"span"}>YAYAYA</Typography>
-              </Box>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography component={"span"}>庫存數量：</Typography>
-                <Typography component={"span"}>YAYAYA</Typography>
-              </Box>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography component={"span"}>商品標籤：</Typography>
-                <Typography component={"span"}>
-                  YAYAYA YAYAYA YAYAYA YAYAYA YAYAYA
-                </Typography>
-              </Box>
-            </Paper>
-          </Grid>
-          <Grid
-            item
-            container
-            justifyContent={"center"}
-            xs={1}
-            sx={{ pt: "150px" }}
-          >
-            <DoubleArrowIcon />
-          </Grid>
-          <Grid
-            item
-            container
-            flexDirection="column"
-            alignItems="center"
-            xs={5}
-          >
-            <Paper
-              elevation={2}
-              sx={{
-                width: "100%",
-                minHeight: "300px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                mt: 4,
-                mb: 3,
-                pt: 2,
-                px: 1,
-              }}
-            >
-              <Typography
-                component={"div"}
-                variant="h6"
-                sx={{ mx: "auto", mb: 2 }}
-              >
-                選擇商品數量及顧客
-              </Typography>
-              <Box sx={{width:'100%', display: 'flex', height:'40px', gap:2, px: 2}}>
-              <TextField
-                  label="數量"
-                  type="number"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  sx={{width:'75px', height: '50px', '&.MuiInputBase-root': {padding: '16px 8px 16px 6px'}}}
-                />
-              <Autocomplete
-                disablePortal
-                sx={{width:'100%', height: '50px'}}
-                options={top100Films}
-                renderInput={(params) => <TextField {...params} label="顧客名稱" InputLabelProps={{
-                    shrink: true,
-                  }} />}
-              />
-              </Box>
-              <Box sx={{mt:3}}>
-                <IconButton color="primary">
-                  <AddCircleIcon/>
-                </IconButton>
-              </Box>
-            </Paper>
-            <Button variant="contained">確認加入</Button>
-          </Grid>
-        </Grid>
+        <AddToCartByProduct/>
       )}
     </>
   );

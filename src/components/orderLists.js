@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import Link from "next/link";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -302,7 +303,7 @@ export function OrderRow({ data }) {
             open={open}
           />
         </TableCell>
-        <TableCell>{data.date}</TableCell>
+        <TableCell><Link href={`/order/${data.id}`}>{data.date}</Link></TableCell>
         <TableCell>{data.name}</TableCell>
         <TableCell>{`$${data.amount}`}</TableCell>
         <TableCell>{data.date}</TableCell>
