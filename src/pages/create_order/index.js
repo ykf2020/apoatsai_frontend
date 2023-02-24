@@ -19,6 +19,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 export default function CreateOrder() {
   const top100Films = [
     { label: "The Shawshank Redemption", year: 1994 },
@@ -183,7 +185,7 @@ export default function CreateOrder() {
               fontSize="large"
             />
           </Typography>
-          <Grid item container xs={12} sx={{ pl: 8, pr: 4 }}>
+          <Grid item container xs={12} sx={{ pl: 8, pr: 4, pb:2 }}>
             <Grid item container justifyContent={"space-around"} sx={{ mb: 1 }}>
               <Grid item xs={4}>
                 品名
@@ -272,6 +274,20 @@ export default function CreateOrder() {
               </Grid>
               <Grid item xs={4} align="right">
                 $890
+              </Grid>
+            </Grid>
+            <Grid
+              item
+              container
+              justifyContent={"space-around"}
+              alignItems="center"
+              sx={{ height: "46px", mb: 1, pt: 2 }}
+            >
+              <Grid item xs={6}>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="已收貨？" />
+              </Grid>
+              <Grid item xs={6}>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="已付款？" />
               </Grid>
             </Grid>
           </Grid>

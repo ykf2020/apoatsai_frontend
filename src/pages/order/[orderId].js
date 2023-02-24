@@ -66,7 +66,7 @@ const Order = () => {
         >
           <Grid item justifyContent="center">
             <Typography component="h1" align="center">
-              <ShoppingBasketRoundedIcon
+              <AssignmentRoundedIcon
                 sx={{ mb: 1 }}
                 color="primary"
                 fontSize="large"
