@@ -7,8 +7,6 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
 import KeyboardArrowLeftRoundedIcon from "@mui/icons-material/KeyboardArrowLeftRounded";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
@@ -32,9 +30,9 @@ export default function CreateOrder() {
     { label: "Pulp Fiction", year: 1994 },
   ];
   return (
-    <Grid container justifyContent="space-around">
-      <Grid item container flexDirection="row" xs={5}>
-        <Grid item xs={12} sx={{ mt: 4 }}>
+    <Grid container justifyContent="space-around" sx={{ mt: 4,  }}>
+      <Grid item container flexDirection="row"  alignContent='flex-start' xs={5}>
+        <Grid item xs={12} sx={{height:'60px'}}>
           <Autocomplete
             disablePortal
             sx={{ width: "100%", height: "50px" }}
@@ -57,7 +55,7 @@ export default function CreateOrder() {
             minHeight: "300px",
             display: "flex",
             flexDirection: "column",
-            mt: -4,
+            mt: 3,
             pt: 2,
             pr: 1,
           }}
@@ -176,7 +174,7 @@ export default function CreateOrder() {
         <Paper
           item
           elevation={3}
-          sx={{ width: "100%", mt: 4, mb: 3, minHeight: "300px" }}
+          sx={{ width: "100%", mt: 0, mb: 3, minHeight: "300px" }}
         >
           <Typography component="h1" align="center">
             <AssignmentRoundedIcon
