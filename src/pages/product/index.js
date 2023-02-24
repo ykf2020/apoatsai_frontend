@@ -7,6 +7,7 @@ import Tab from "@mui/material/Tab";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import CreateTagDialog from "@/components/createTagDialog";
+import CreateCategoryDialog from "./components/createCategoryDialog";
 import ProductTable from "./components/productTable";
 import CategoryTable from "./components/categoeyTable";
 import TagsBox from "@/components/TagsBox";
@@ -26,13 +27,14 @@ export function CreateProductButton() {
   );
 }
 
-export function CreateCategoryButton() {
+export function CreateCategoryButton({handleOpen}) {
   return (
     <Button
       variant="outlined"
       sx={{ height: 1 }}
       size="small"
       startIcon={<AddIcon />}
+      onClick={handleOpen}
     >
       新增商品分類
     </Button>
@@ -56,6 +58,7 @@ export function CreateTagButton({ handleOpen }) {
 export default function Product() {
   const [value, setValue] = useState(0);
   const [createTagDialogOpen, setCreateTagDialogOpen] = useState(false);
+  const [createCategoryOpen, setCreateCategoryDialogOpen] = useState(false);
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -73,7 +76,9 @@ export default function Product() {
             <Tab label="商品標籤" />
           </Tabs>
           {value === 0 && <CreateProductButton />}
-          {value === 1 && <CreateCategoryButton />}
+          {value === 1 && <CreateCategoryButton handleOpen={() => {
+                setCreateCategoryDialogOpen(true);
+              }}/>}
           {value === 2 && (
             <CreateTagButton
               handleOpen={() => {
@@ -83,6 +88,12 @@ export default function Product() {
           )}
         </Box>
       </Grid>
+      <CreateCategoryDialog
+        open={createCategoryOpen}
+        handleClose={() => {
+          setCreateCategoryDialogOpen(false);
+        }}
+      />
       <CreateTagDialog
         open={createTagDialogOpen}
         handleClose={() => {
